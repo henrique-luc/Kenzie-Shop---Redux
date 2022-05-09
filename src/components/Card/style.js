@@ -1,11 +1,6 @@
 import styled from "styled-components";
 
-export const Ul = styled.ul`
-  display: flex;
-  flex-direction: column;
-  max-width: 84%;
-  margin: 0 auto;
-
+export const Div = styled.div`
   li {
     list-style: none;
     border: 2px solid #e0e0e0;
@@ -17,6 +12,7 @@ export const Ul = styled.ul`
     display: flex;
     flex-direction: column;
     align-items: baseline;
+    overflow: hidden;
   }
 
   li section {

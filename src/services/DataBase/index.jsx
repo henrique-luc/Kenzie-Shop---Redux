@@ -1,4 +1,4 @@
-export const products = [
+export const productsList = [
   { name: "Sofá Cinza", price: "3500.00", image: "sofaGrey.png", id: 1 },
   { name: "Sofá Amarelo", price: "3000.00", image: "sofaYellow.png", id: 2 },
   { name: "Poltrona Clássica", price: "1200.00", image: "chair.png", id: 3 },

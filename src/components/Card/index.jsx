@@ -1,20 +1,33 @@
-import { products } from "../../services/DataBase";
-import { Ul } from "./style";
+import { Div } from "./style";
+import { useDispatch } from "react-redux";
+import {
+  AddToCartThunk,
+  RemoveFromCartThunk,
+} from "../../store/modules/Cart/thunks";
 
-export default function Card() {
+export default function Card({ product, isRemovable = false }) {
+  const dispatch = useDispatch();
+  const { name, price, image, id } = product;
+
   return (
-    <Ul>
-      {products.map((product, id) => (
-        <li key={id}>
-          <figure>
-            <img src={product.image} alt={product.name} />
-            <figcaption>{product.name}</figcaption>
-          </figure>
-          <h2>{product.name}</h2>
-          <span>R$ {product.price}</span>
-          <button>Adicionar ao carrinho</button>
-        </li>
-      ))}
-    </Ul>
+    <Div>
+      <li>
+        <figure>
+          <img src={image} alt={name} />
+          <figcaption>{name}</figcaption>
+        </figure>
+        <h2>{name}</h2>
+        <span>R$ {price}</span>
+        {isRemovable ? (
+          <button onClick={() => dispatch(RemoveFromCartThunk(id))}>
+            Remover
+          </button>
+        ) : (
+          <button onClick={() => dispatch(AddToCartThunk(product))}>
+            Adicionar ao carrinho
+          </button>
+        )}
+      </li>
+    </Div>
   );
 }

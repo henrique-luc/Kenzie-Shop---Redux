@@ -1,6 +1,9 @@
 import { HeaderContainer } from "./style";
+import { useHistory } from "react-router-dom";
 
-export default function Header() {
+export default function Header({ isHome = false }) {
+  const history = useHistory();
+
   return (
     <HeaderContainer>
       <h1>
@@ -9,7 +12,11 @@ export default function Header() {
       <section className="container_header-buttons">
         <div>
           <figure></figure>
-          <button>Carrinho</button>
+          {isHome ? (
+            <button onClick={() => history.push("/cart")}>Carrinho</button>
+          ) : (
+            <button onClick={() => history.push("/")}>Home</button>
+          )}
         </div>
         <div>
           <figure></figure>
