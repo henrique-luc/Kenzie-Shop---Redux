@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
-import Card from "../../components/Card";
+import CardCart from "../../components/Cart";
 import Header from "../../components/Header";
+import { Section } from "./style";
 
 export default function CartPage() {
   const cart = useSelector(({ cart }) => cart);
@@ -8,11 +9,13 @@ export default function CartPage() {
   return (
     <div>
       <Header />
-      <ul>
-        {cart.map((product, index) => (
-          <Card key={index} product={product} isRemovable></Card>
-        ))}
-      </ul>
+      <Section>
+        <ul>
+          {cart.map((product, index) => (
+            <CardCart key={index} product={product} isRemovable></CardCart>
+          ))}
+        </ul>
+      </Section>
     </div>
   );
 }
